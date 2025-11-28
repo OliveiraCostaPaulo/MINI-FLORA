@@ -19,22 +19,20 @@ import {
 
 /**
  * Brand Logo Component
- * 
- * GUIA ATUALIZADO:
- * 1. Não precisa criar pasta 'public'.
- * 2. Apenas salve o arquivo 'logo.png' na mesma pasta deste código (raiz).
+ * Agora busca direto de /logo.png (que deve estar na pasta public)
  */
 const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`relative ${className}`}>
     <img 
-      src="logo.png" 
+      src="/logo.png" 
       alt="Mini Flora Logo" 
       className="w-32 md:w-40 h-auto object-contain select-none"
       onError={(e) => {
-        // Fallback apenas para você saber se a imagem não carregou
+        // Fallback apenas se a imagem não carregar
         e.currentTarget.style.display = 'none';
-        e.currentTarget.parentElement?.classList.add('bg-gray-200', 'flex', 'items-center', 'justify-center', 'text-xs', 'text-gray-500', 'p-2');
-        if(e.currentTarget.parentElement) e.currentTarget.parentElement.innerText = "Logo não encontrado (adicione logo.png na raiz)";
+        if(e.currentTarget.parentElement) {
+           e.currentTarget.parentElement.innerHTML = `<span class="text-brand-orange font-display font-bold text-2xl">MINI<br/>FLORA</span>`;
+        }
       }}
     />
   </div>
@@ -192,12 +190,9 @@ const Hero = () => {
         
         <div className="order-1 md:order-2 relative">
           <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white transform rotate-1 hover:rotate-0 transition-transform duration-700 hover:shadow-orange-500/10">
-            {/* 
-              IMAGEM HERO 
-              Arquivo: hero-image.jpg (na raiz do projeto)
-            */}
+            {/* IMAGEM HERO */}
             <img 
-              src="hero-image.jpg" 
+              src="/hero-image.jpg"
               alt="Microverdes frescos e vibrantes" 
               className="w-full h-auto object-cover scale-105 hover:scale-100 transition-transform duration-1000 bg-slate-200"
               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1533622597524-a1215e26c0a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }}
@@ -275,12 +270,9 @@ const ValueProposition = () => {
 
           <div className="relative">
              <div className="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-green rounded-2xl transform rotate-2 opacity-20"></div>
-             {/* 
-               IMAGEM CIENTISTA/ANÁLISE 
-               Arquivo: analise-nutrientes.jpg (na raiz)
-             */}
+             {/* IMAGEM CIENTISTA/ANÁLISE */}
              <img 
-              src="analise-nutrientes.jpg" 
+              src="/analise-nutrientes.jpg" 
               alt="Cientista analisando plantas" 
               className="relative rounded-2xl shadow-2xl w-full object-cover aspect-[4/5] object-center bg-slate-200"
               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1515688594390-b649af70d282?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" }} 
@@ -377,12 +369,9 @@ const Features = () => {
               </div>
               <div className="relative">
                  <div className="absolute -inset-4 bg-brand-lightGreen/20 rounded-full blur-xl animate-pulse"></div>
-                 {/* 
-                    IMAGEM ALIMENTO VIVO 
-                    Arquivo: microverdes-vivos.jpg (na raiz)
-                 */}
+                 {/* IMAGEM ALIMENTO VIVO */}
                  <img 
-                  src="microverdes-vivos.jpg" 
+                  src="/microverdes-vivos.jpg" 
                   alt="Bandeja de microverdes vivos" 
                   className="relative rounded-2xl shadow-2xl border-4 border-white/20 rotate-1 hover:rotate-0 transition-transform duration-500 bg-slate-700"
                   onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1585827552668-d0728b355e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }}
@@ -474,12 +463,9 @@ const Contact = () => {
           </div>
           
           <div className="md:w-1/2 bg-brand-cream relative group">
-            {/* 
-               IMAGEM CONTATO
-               Arquivo: contato-bg.jpg (na raiz)
-            */}
+            {/* IMAGEM CONTATO */}
             <img 
-              src="contato-bg.jpg" 
+              src="/contato-bg.jpg" 
               alt="Mão segurando microverdes" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 bg-slate-200"
               onError={(e) => { e.currentTarget.src = "https://images.unsplash.com/photo-1620916297397-a4a5402a3c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" }}
